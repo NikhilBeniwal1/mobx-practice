@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_practice/store/counter.dart';
 
 void main() {
@@ -52,19 +53,41 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              counter.count.toString(),
-              style: Theme.of(context).textTheme.headlineMedium,
+            Observer(
+              builder: (context){
+                return  Text(
+                  counter.count.toString(),
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              }
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          counter.increment();
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ///increement button
+            FloatingActionButton(
+              onPressed: (){
+                counter.increment();
+              },
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            ),
+
+            /// decrement button
+            FloatingActionButton(
+              onPressed: (){
+                counter.decrement();
+              },
+              tooltip: 'Increment',
+              child:  const Center(child:  Icon(Icons.minimize)),
+            ),
+          ],
+        ),
       ),
     );
   }

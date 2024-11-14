@@ -8,9 +8,14 @@ abstract class _Counter with Store {
   int count = 0;
 
   @action
-  increment (){
+ void increment (){
     count += 1;
 
+  }
+
+ void decrement(){
+
+    count --;
   }
 
 }

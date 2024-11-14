@@ -28,7 +28,7 @@ mixin _$Counter on _Counter, Store {
       ActionController(name: '_Counter', context: context);
 
   @override
-  dynamic increment() {
+  void increment() {
     final _$actionInfo =
         _$_CounterActionController.startAction(name: '_Counter.increment');
     try {
